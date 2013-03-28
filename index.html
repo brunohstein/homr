@@ -3,22 +3,52 @@
 <head>
   <meta charset="UTF-8">
   <title>Which Movie?</title>
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/reset.css">
+  <link rel="stylesheet" href="assets/css/chosen.css">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="shortcut icon" href="assets/img/favicon.ico" />
 </head>
 <body>
-  <section class="user-input">
-    <select class="genre-selector"></select>
-    <button class="submit-button btn">Go</button>
-  </section>
+  <div class="wrapper">
+    <header>
+      <h1>WHICH MOVIE?</h1>
+    </header>
 
-  <section class="search-results">
-    <ul class="movie-list"></ul>
-  </section>
+    <section class="user-input">
+      <select class="genre-selector" data-placeholder="SELECT A GENRE">
+        <option></option>
+        <option value="action">ACTION</option>
+        <option value="adventure">ADVENTURE</option>
+        <option value="animation">ANIMATION</option>
+        <option value="biography">BIOGRAPHY</option>
+        <option value="comedy">COMEDY</option>
+        <option value="crime">CRIME</option>
+        <option value="crime story">CRIME STORY</option>
+        <option value="documentary">DOCUMENTARY</option>
+        <option value="drama">DRAMA</option>
+        <option value="family">FAMILY</option>
+        <option value="fantasy">FANTASY</option>
+        <option value="history">HISTORY</option>
+        <option value="horror">HORROR</option>
+        <option value="music">MUSIC</option>
+        <option value="mystery">MYSTERY</option>
+        <option value="romance">ROMANCE</option>
+        <option value="science-fiction">SCI-FI</option>
+        <option value="short">SHORT</option>
+        <option value="thriller">THRILLER</option>
+        <option value="war">WAR</option>
+      </select>
+    </section>
+
+    <section class="search-results">
+      <div class="loading-message"></div>
+      <ul class="movie-list"></ul>
+      <ul class="seen-list"></ul>
+    </section>
+  </div>
 
   <script src="assets/js/jquery-1.7.2.min.js" type="text/javascript"></script>
-  <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="assets/js/chosen.jquery.min.js" type="text/javascript"></script>
   <script src="assets/js/application.js" type="text/javascript"></script>
 </body>
 </html>

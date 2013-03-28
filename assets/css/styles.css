@@ -1,0 +1,269 @@
+@font-face {
+  font-family: 'Delicious Bold';
+  src: url('../fonts/delicious-heavy.eot');
+  src: url('../fonts/delicious-heavy.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/delicious-heavy.woff') format('woff'),
+       url('../fonts/delicious-heavy.ttf') format('truetype'),
+       url('../fonts/delicious-heavy.svg#delicious_heavyregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Delicious';
+  src: url('../fonts/delicious-roman.eot');
+  src: url('../fonts/delicious-roman.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/delicious-roman.woff') format('woff'),
+       url('../fonts/delicious-roman.ttf') format('truetype'),
+       url('../fonts/delicious-roman.svg#deliciousroman') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  opacity: 0;
+  margin: 0;
+  background: white;
+  color: #1d1626;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: 'Delicious', 'Helvetica', 'Helvetica Neue', 'Arial', Sans-serif;
+}
+
+body.visible {
+  opacity: 1;
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
+}
+
+.wrapper {
+  width: 850px;
+  margin: 0 auto;
+  padding-bottom: 150px;
+  overflow: visible;
+}
+
+.column {
+  float: left;
+}
+
+header {
+  height: 320px;
+}
+  
+  header h1 {
+    font-family: 'Delicious Bold';
+    letter-spacing: -2px;
+    font-size: 40px;
+    line-height: 320px;
+}
+
+.chzn-container {
+  margin: 0 auto !important;
+  display: block !important;
+  width: 600px !important;
+}
+  
+  .chzn-single {
+    -webkit-box-sizing: border-box !important;
+    -moz-box-sizing: border-box !important;
+    -ms-box-sizing: border-box !important;
+    -o-box-sizing: border-box !important;
+    box-sizing: border-box !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -ms-border-radius: 0 !important;
+    -o-border-radius: 0 !important;
+    border-radius: 0 !important;
+    border: 0 !important;
+    height: 120px !important;
+    padding: 0 40px !important;
+    background: #1d1626 !important;
+    color: white !important;
+    font-size: 40px !important;
+    letter-spacing: -2px !important;
+    line-height: 120px !important;
+  }
+
+    .chzn-container-single .chzn-single div {
+      width: 100px;
+    }
+
+      .chzn-container-single .chzn-single div b {
+        background: url('../img/chosen-drop-arrow.png') no-repeat center center;
+      }
+
+  .chzn-drop {
+    width: 100% !important;
+    border: 0 !important;
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    -ms-border-radius: 0 !important;
+    -o-border-radius: 0 !important;
+    border-radius: 0 !important;
+    -webkit-box-shadow: 0 0 0 !important;
+    -moz-box-shadow: 0 0 0 !important;
+    -ms-box-shadow: 0 0 0 !important;
+    -o-box-shadow: 0 0 0 !important;
+    box-shadow: 0 0 0 !important;
+    margin: -10px 0 0 !important;
+    background: transparent !important;
+  }
+
+    .chzn-container .chzn-results {
+      padding: 0 !important;
+      margin: 0 !important;
+      max-height: 2000px !important;
+      font-size: 24px !important;
+      margin: 5px 0 !important;
+    }
+
+      .chzn-container .chzn-results li {
+        -webkit-box-sizing: border-box !important;
+        -moz-box-sizing: border-box !important;
+        -ms-box-sizing: border-box !important;
+        -o-box-sizing: border-box !important;
+        box-sizing: border-box !important;
+        padding: 20px 40px !important;
+        background: #6a6473;
+        color: white;
+        margin: 2px 0;
+      }
+
+        .chzn-container .chzn-results li.highlighted {
+          background: #1d1626;
+        }
+
+.loading-message {
+  height: 11px;
+  width: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0 0 0 -8px;
+  background: url('../img/spinner.gif') no-repeat;
+}
+
+.movie-list li {
+  display: none;
+}
+
+.movie-list li:first-child {
+  display: block;
+}
+
+.movie-picture {
+  overflow: hidden;
+  width: 180px;
+  height: 180px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+  border-radius: 100px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+  .movie-picture img {
+    width: 180px;
+  }
+
+.movie-id {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+}
+
+  .movie-title {
+    font-family: 'Delicious Bold';
+    font-size: 40px;
+    width: 250px;
+    line-height: 35px;
+    text-transform: uppercase;
+  }
+
+  .movie-director {
+    font-family: 'Delicious Bold';
+    font-size: 20px;
+    color: #6a6473;
+    text-transform: uppercase;
+    margin-left: 2px;
+    margin-top: 5px;
+  }
+
+.movie-info {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 50px;
+}
+
+  .movie-description {
+    width: 350px;
+  }
+
+  .seen-button, .pass-button {
+    height: 50px;
+    line-height: 50px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    color: white;
+    margin-top: 25px;
+    float: left;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .seen-button {
+    width: 175px;
+    background: #1d1626;
+  }
+
+  .pass-button {
+    width: 115px;
+    background: #6a6473;
+    margin-left: 1px;
+  }
+
+.the-end {
+  font-family: 'Delicious Bold';
+  font-size: 40px;
+  line-height: 35px;
+  text-transform: uppercase;
+}
+
+  .the-end small {
+    font-size: 20px;
+    color: #6a6473;
+    margin-left: 2px;
+    margin-top: 5px;
+    display: block;
+  }
+
+.retry-button {
+  height: 50px;
+  line-height: 50px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box;
+  color: white;
+  margin-top: 25px;
+  float: left;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  width: 175px;
+  background: #6a6473;
+  margin-top: 20px;
+}
