@@ -48,7 +48,7 @@ var app = {
           $('.the-end').before($(this));
         } else {
           $(this).appendTo(app.ui.movieList);
-        }
+        };
         $(this).attr('style', '');
       });
       return false;
@@ -89,7 +89,7 @@ var app = {
             app.ui.movieList.append([
               '<li class="the-end">',
                 '<h3>The end.',
-                  '<small>These are not the droid you are looking for.</small>',
+                  '<small>You are good to go by your own.</small>',
                 '</h3>',
                 '<a href="#" class="retry-button">Try another genre</a>',
               '</li>'
