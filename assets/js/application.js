@@ -6,10 +6,6 @@ var app = {
     minimumNumberOfVotes: 500
   },
 
-  database: {
-    movies: new Array()
-  },
-
   ui: {
     movieList: $('.movie-list'),
     seenList: $('.seen-list'),
@@ -69,29 +65,38 @@ var app = {
     });
 
     function successCallback(data) {
+      var movies = new Array();
       $.each(data.objects, function(i, movie) {
         if (i < 9) {
           if (movie.average_score >= app.config.minimumAverageScore & movie.number_of_votes >= app.config.minimumNumberOfVotes) {
-            app.database.movies.push(movie);
+            movies.push(movie);
           }
         } else if (i == 9) {
+          app.ui.loadingMessage.fadeOut('fast');
+          app.showMovies(movies);
           if (movie.average_score >= app.config.minimumAverageScore) {
             if (movie.number_of_votes >= app.config.minimumNumberOfVotes) {
-              app.database.movies.push(movie);  
+              movies.push(movie);
             }
             page++;
             app.getMovies(page);
           } else {
-            app.ui.loadingMessage.fadeOut('fast');
-            app.showMovies();
+            app.ui.movieList.append([
+              '<li>',
+                '<h3 class="the-end">The end.',
+                  '<small>These are not the droid you are looking for.</small>',
+                '</h3>',
+                '<a href="#" class="retry-button">Try another genre</a>',
+              '</li>'
+            ].join(''));
           }
         }
       });
     };
   },
 
-  showMovies: function() {
-    $.each(app.database.movies, function(i, movie) {
+  showMovies: function(movies) {
+    $.each(movies, function(i, movie) {
       app.ui.movieList.append([
         '<li>',
           '<div class="movie-picture">',
@@ -109,14 +114,6 @@ var app = {
         '</li>'
       ].join(''));
     });
-    app.ui.movieList.append([
-      '<li>',
-        '<h3 class="the-end">The end.',
-          '<small>These are not the droid you are looking for.</small>',
-        '</h3>',
-        '<a href="#" class="retry-button">Try another genre</a>',
-      '</li>'
-      ].join(''));
     app.bindSeenButton();
     app.bindPassButton();
     app.bindRetryButton();
