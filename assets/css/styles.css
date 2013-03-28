@@ -59,7 +59,22 @@ header {
     letter-spacing: -2px;
     font-size: 40px;
     line-height: 320px;
-}
+  }
+
+  .to-do-list {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    -webkit-transform:rotate(-4deg);
+    -moz-transform:rotate(-4deg);
+    -ms-transform:rotate(-4deg);
+    -o-transform:rotate(-4deg);
+    transform:rotate(-4deg);
+  }
+
+    .to-do-list ul {
+      list-style: circle;
+    }
 
 .chzn-container {
   margin: 0 auto !important;
@@ -233,14 +248,14 @@ header {
     margin-left: 1px;
   }
 
-.the-end {
+.the-end h3 {
   font-family: 'Delicious Bold';
   font-size: 40px;
   line-height: 35px;
   text-transform: uppercase;
 }
 
-  .the-end small {
+  .the-end h3 small {
     font-size: 20px;
     color: #6a6473;
     margin-left: 2px;

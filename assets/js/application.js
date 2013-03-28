@@ -44,7 +44,12 @@ var app = {
   bindPassButton: function() {
     $('.pass-button').click(function() {
       $(this).parents('li').fadeOut(function() {
-        $(this).remove();
+        if ($('.the-end').length > 0) {
+          $('.the-end').before($(this));
+        } else {
+          $(this).appendTo(app.ui.movieList);
+        }
+        $(this).attr('style', '');
       });
       return false;
     });
@@ -82,13 +87,14 @@ var app = {
             app.getMovies(page);
           } else {
             app.ui.movieList.append([
-              '<li>',
-                '<h3 class="the-end">The end.',
+              '<li class="the-end">',
+                '<h3>The end.',
                   '<small>These are not the droid you are looking for.</small>',
                 '</h3>',
                 '<a href="#" class="retry-button">Try another genre</a>',
               '</li>'
             ].join(''));
+            app.bindRetryButton();
           }
         }
       });
@@ -116,7 +122,6 @@ var app = {
     });
     app.bindSeenButton();
     app.bindPassButton();
-    app.bindRetryButton();
   }
 };
 
