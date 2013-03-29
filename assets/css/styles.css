@@ -155,7 +155,7 @@ header {
 .loading-message {
   height: 11px;
   width: 16px;
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   margin: 0 0 0 -8px;
@@ -281,3 +281,25 @@ header {
   background: #6a6473;
   margin-top: 20px;
 }
+
+.seen-movies {
+  margin-top: 140px;
+}
+
+  .seen-movies-title {
+    font-size: 25px;
+    font-family: 'Delicious Bold';
+    line-height: 50px;
+  }
+
+  .seen-list li {
+    display: inline;
+    font-size: 20px;
+    line-height: 26px;
+    color: #6a6473;
+  }
+
+    .seen-list li + li:before {
+      content: '•';
+      margin: 0 10px;
+    }

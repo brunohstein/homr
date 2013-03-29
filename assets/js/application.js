@@ -9,13 +9,16 @@ var app = {
   ui: {
     movieList: $('.movie-list'),
     seenList: $('.seen-list'),
+    seenMoviesTitle: $('.seen-movies-title'),
     loadingMessage: $('.loading-message'),
     genreSelector: $('.genre-selector')
   },
 
   init: function() {
     app.ui.loadingMessage.hide();
+    app.ui.seenMoviesTitle.hide();
     app.bindGenreSelector();
+    app.showSeenMovies();
   },
 
   bindGenreSelector: function() {
@@ -35,7 +38,9 @@ var app = {
   bindSeenButton: function() {
     $('.seen-button').click(function() {
       $(this).parents('li').fadeOut(function() {
+        localStorage.setItem(localStorage.length + 1, app.ui.movieList.find('li').first().find('.movie-title').text());
         $(this).remove();
+        app.showSeenMovies();
       });
       return false;
     });
@@ -122,6 +127,22 @@ var app = {
     });
     app.bindSeenButton();
     app.bindPassButton();
+  },
+
+  showSeenMovies: function() {
+    if (localStorage.length > 0) {
+      app.ui.seenMoviesTitle.fadeIn();
+    }
+    
+    app.ui.seenList.html('');
+
+    for (var i = 1; i <= localStorage.length; i++)  {
+      app.ui.seenList.append([
+        '<li>',
+          localStorage.getItem(i) +
+        '</li>'
+      ].join(''));
+    }
   }
 };
 
