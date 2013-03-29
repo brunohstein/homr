@@ -133,7 +133,7 @@ var app = {
     if (localStorage.length > 0) {
       app.ui.seenMoviesTitle.fadeIn();
     }
-    
+
     app.ui.seenList.html('');
 
     for (var i = 1; i <= localStorage.length; i++)  {
