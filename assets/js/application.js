@@ -79,14 +79,30 @@ var app = {
       $.each(data.objects, function(i, movie) {
         if (i < 9) {
           if (movie.average_score >= app.config.minimumAverageScore & movie.number_of_votes >= app.config.minimumNumberOfVotes) {
-            movies.push(movie);
+            var exists = false;
+            for (var i = 1; i <= localStorage.length; i++)  {
+              if (localStorage.getItem(i) == movie.title_localized) {
+                exists = true;
+              }
+            };
+            if (exists == false) {
+              movies.push(movie);
+            };
           }
         } else if (i == 9) {
           app.ui.loadingMessage.fadeOut('fast');
           app.showMovies(movies);
           if (movie.average_score >= app.config.minimumAverageScore) {
             if (movie.number_of_votes >= app.config.minimumNumberOfVotes) {
-              movies.push(movie);
+              var exists = false;
+              for (var i = 1; i <= localStorage.length; i++)  {
+                if (localStorage.getItem(i) == movie.title_localized) {
+                  exists = true;
+                }
+              };
+              if (exists == false) {
+                movies.push(movie);
+              };
             }
             page++;
             app.getMovies(page);
@@ -132,7 +148,7 @@ var app = {
   showSeenMovies: function() {
     if (localStorage.length > 0) {
       app.ui.seenMoviesTitle.fadeIn();
-    }
+    };
 
     app.ui.seenList.html('');
 
