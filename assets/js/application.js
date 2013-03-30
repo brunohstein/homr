@@ -38,7 +38,7 @@ var app = {
   bindSeenButton: function() {
     $('.seen-button').click(function() {
       $(this).parents('li').fadeOut(function() {
-        localStorage.setItem(localStorage.length + 1, app.ui.movieList.find('li').first().find('.movie-title').text());
+        localStorage.setItem(app.ui.movieList.find('li').first().find('.movie-title').text(), app.ui.movieList.find('li').first().find('.movie-title').text());
         $(this).remove();
         app.showSeenMovies();
       });
@@ -67,6 +67,19 @@ var app = {
     });
   },
 
+  bindRemoveMovie: function() {
+    $('.remove-movie-button').click(function() {
+      for (var i = 0; i < localStorage.length; i++){
+        var value = localStorage[localStorage.key(i)];
+        if (value == $(this).prev('.seen-movie').text()) {
+          localStorage.removeItem(localStorage.key(i));
+          app.showSeenMovies();
+        }
+      }
+      return false;
+    });
+  },
+
   getMovies: function(page) {
     $.ajax({
       url: app.config.baseUrl + '/1.1/ranking/film/?tags= ' + app.config.genre + '&page=' + page,
@@ -80,8 +93,9 @@ var app = {
         if (i < 9) {
           if (movie.average_score >= app.config.minimumAverageScore & movie.number_of_votes >= app.config.minimumNumberOfVotes) {
             var exists = false;
-            for (var i = 1; i <= localStorage.length; i++)  {
-              if (localStorage.getItem(i) == movie.title_localized) {
+            for (var i = 0; i < localStorage.length; i++){
+              var value = localStorage[localStorage.key(i)];
+              if (value == movie.title_localized) {
                 exists = true;
               }
             };
@@ -95,8 +109,9 @@ var app = {
           if (movie.average_score >= app.config.minimumAverageScore) {
             if (movie.number_of_votes >= app.config.minimumNumberOfVotes) {
               var exists = false;
-              for (var i = 1; i <= localStorage.length; i++)  {
-                if (localStorage.getItem(i) == movie.title_localized) {
+              for (var i = 0; i < localStorage.length; i++){
+                var value = localStorage[localStorage.key(i)];
+                if (value == movie.title_localized) {
                   exists = true;
                 }
               };
@@ -152,12 +167,15 @@ var app = {
 
     app.ui.seenList.html('');
 
-    for (var i = 1; i <= localStorage.length; i++)  {
+    for (var i = 0; i < localStorage.length; i++){
+      var value = localStorage[localStorage.key(i)];
       app.ui.seenList.append([
         '<li>',
-          localStorage.getItem(i) +
+          '<span class="seen-movie">' + value + '</span>',
+          '<a href="#" class="remove-movie-button" title="I have not seen this movie">x</a>',
         '</li>'
       ].join(''));
+      app.bindRemoveMovie();
     }
   }
 };

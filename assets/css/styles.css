@@ -61,21 +61,6 @@ header {
     line-height: 320px;
   }
 
-  .to-do-list {
-    position: absolute;
-    top: 50px;
-    right: 50px;
-    -webkit-transform:rotate(-4deg);
-    -moz-transform:rotate(-4deg);
-    -ms-transform:rotate(-4deg);
-    -o-transform:rotate(-4deg);
-    transform:rotate(-4deg);
-  }
-
-    .to-do-list ul {
-      list-style: circle;
-    }
-
 .chzn-container {
   margin: 0 auto !important;
   display: block !important;
@@ -289,7 +274,7 @@ header {
   .seen-movies-title {
     font-size: 25px;
     font-family: 'Delicious Bold';
-    line-height: 50px;
+    line-height: 80px;
   }
 
   .seen-list li {
@@ -302,4 +287,20 @@ header {
     .seen-list li + li:before {
       content: '•';
       margin: 0 10px;
+    }
+
+    .remove-movie-button {
+      color: #6a6473;
+      font-size: 12px;
+      font-family: 'Arial';
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      vertical-align: top;
+      line-height: 10px;
+      margin-left: 4px;
+    }
+
+    .remove-movie-button:hover {
+      color: #881313;
     }
