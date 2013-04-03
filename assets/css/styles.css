@@ -278,15 +278,18 @@ header {
   }
 
   .seen-list li {
-    display: inline;
+    display: inline-block;
+    vertical-align: top;
     font-size: 20px;
-    line-height: 26px;
+    line-height: 40px;
     color: #6a6473;
+    width: 280px;
+    white-space: nowrap;
   }
 
-    .seen-list li + li:before {
+    .seen-list li:before {
       content: '•';
-      margin: 0 10px;
+      margin: 0 10px 0 0;
     }
 
     .remove-movie-button {
@@ -299,6 +302,11 @@ header {
       vertical-align: top;
       line-height: 10px;
       margin-left: 4px;
+      opacity: 0;
+    }
+
+    .seen-list li:hover .remove-movie-button {
+      opacity: 1;
     }
 
     .remove-movie-button:hover {
