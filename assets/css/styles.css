@@ -54,11 +54,13 @@ header {
   height: 320px;
 }
   
-  header h1 {
+  header h1 a {
     font-family: 'Delicious Bold';
     letter-spacing: -2px;
     font-size: 40px;
     line-height: 320px;
+    color: #1d1626;
+    text-decoration: none;
   }
 
 .chzn-container {
