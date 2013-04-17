@@ -2,8 +2,8 @@ var app = {
   config: {
     genre: '',
     baseUrl: 'http://api.filmaster.com',
-    minimumAverageScore: 7.8,
-    minimumNumberOfVotes: 100
+    minimumAverageScore: 7.5,
+    minimumNumberOfVotes: 150
   },
 
   ui: {
