@@ -40,7 +40,7 @@ body.visible {
 }
 
 .wrapper {
-  width: 850px;
+  width: 910px;
   margin: 0 auto;
   padding-bottom: 150px;
   overflow: visible;
@@ -51,14 +51,14 @@ body.visible {
 }
 
 header {
-  height: 320px;
+  height: 250px;
 }
   
   header h1 a {
     font-family: 'Delicious Bold';
     letter-spacing: -2px;
     font-size: 40px;
-    line-height: 320px;
+    line-height: 250px;
     color: #1d1626;
     text-decoration: none;
   }
@@ -81,6 +81,7 @@ header {
     -o-border-radius: 0 !important;
     border-radius: 0 !important;
     border: 0 !important;
+    border-left: 1px solid white !important;
     height: 120px !important;
     padding: 0 40px !important;
     background: #1d1626 !important;
@@ -129,10 +130,17 @@ header {
         -ms-box-sizing: border-box !important;
         -o-box-sizing: border-box !important;
         box-sizing: border-box !important;
-        padding: 20px 40px !important;
+        width: 200px !important;
+        padding: 0 !important;
+        height: 50px !important;
+        line-height: 50px !important;
         background: #6a6473;
         color: white;
-        margin: 2px 0;
+        border-top: 1px solid white;
+        border-left: 1px solid white;
+        margin: 0;
+        text-align: center;
+        display: inline-block !important;
       }
 
         .chzn-container .chzn-results li.highlighted {
@@ -149,13 +157,17 @@ header {
   background: url('../img/spinner.gif') no-repeat;
 }
 
-.movie-list li {
-  display: none;
+.movie-list {
+  height: 180px;
 }
 
-.movie-list li:first-child {
-  display: block;
-}
+  .movie-list li {
+    display: none;
+  }
+
+  .movie-list li:first-child {
+    display: block;
+  }
 
 .movie-picture {
   overflow: hidden;
@@ -207,7 +219,7 @@ header {
     width: 350px;
   }
 
-  .seen-button, .pass-button {
+  .seen-button, .pass-button, .remove-button {
     height: 50px;
     line-height: 50px;
     -webkit-box-sizing: border-box;
@@ -225,13 +237,19 @@ header {
   }
 
   .seen-button {
-    width: 175px;
+    width: 135px;
     background: #1d1626;
   }
 
   .pass-button {
-    width: 115px;
+    width: 135px;
     background: #6a6473;
+    margin-left: 1px;
+  }
+
+  .remove-button {
+    width: 135px;
+    background: #881313;
     margin-left: 1px;
   }
 
@@ -270,7 +288,7 @@ header {
 }
 
 .seen-movies {
-  margin-top: 140px;
+  margin-top: 90px;
 }
 
   .seen-movies-title {
@@ -294,7 +312,7 @@ header {
       margin: 0 10px 0 0;
     }
 
-    .remove-movie-button {
+    .remove-movie-from-seen-button {
       color: #6a6473;
       font-size: 12px;
       font-family: 'Arial';
@@ -307,10 +325,10 @@ header {
       opacity: 0;
     }
 
-    .seen-list li:hover .remove-movie-button {
+    .seen-list li:hover .remove-movie-from-seen-button {
       opacity: 1;
     }
 
-    .remove-movie-button:hover {
+    .remove-movie-from-seen-button:hover {
       color: #881313;
     }

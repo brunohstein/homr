@@ -7,6 +7,7 @@ var app = {
   },
 
   ui: {
+    userInput: $('.user-input'),
     movieList: $('.movie-list'),
     seenList: $('.seen-list'),
     seenMoviesTitle: $('.seen-movies-title'),
@@ -15,6 +16,7 @@ var app = {
   },
 
   init: function() {
+    app.ui.movieList.hide();
     app.ui.loadingMessage.hide();
     app.ui.seenMoviesTitle.hide();
     app.bindGenreSelector();
@@ -27,9 +29,10 @@ var app = {
     app.ui.genreSelector.change(function() {
       app.config.genre = $(this).val();
       app.ui.genreSelector.fadeOut();
-      $(".chzn-container").fadeOut(function() {
+      app.ui.userInput.fadeOut(function() {
         $(this).remove();
         app.ui.loadingMessage.fadeIn();
+        app.ui.movieList.fadeIn();
       });
       app.getMovies(1);
     });
@@ -38,7 +41,7 @@ var app = {
   bindSeenButton: function() {
     $('.seen-button').click(function() {
       $(this).parents('li').fadeOut(function() {
-        localStorage.setItem(app.ui.movieList.find('li').first().find('.movie-title').text(), app.ui.movieList.find('li').first().find('.movie-title').text());
+        localStorage.setItem(app.ui.movieList.find('li').first().find('.movie-title').text(), 'seen');
         $(this).remove();
         app.showSeenMovies();
       });
@@ -60,6 +63,16 @@ var app = {
     });
   },
 
+  bindRemoveButton: function() {
+    $('.remove-movie').click(function() {
+      $(this).parents('li').fadeOut(function() {
+        localStorage.setItem(app.ui.movieList.find('li').first().find('.movie-title').text(), 'removed');
+        $(this).remove();
+      });
+      return false;
+    });
+  },
+
   bindRetryButton: function() {
     $('.retry-button').click(function() {
       window.location.reload(true);
@@ -67,8 +80,8 @@ var app = {
     });
   },
 
-  bindRemoveMovie: function() {
-    $('.remove-movie-button').click(function() {
+  bindRemoveMovieFromSeen: function() {
+    $('.remove-movie-from-seen-button').click(function() {
       for (var i = 0; i < localStorage.length; i++){
         var value = localStorage[localStorage.key(i)];
         if (value == $(this).prev('.seen-movie').text()) {
@@ -95,7 +108,7 @@ var app = {
             var exists = false;
             for (var i = 0; i < localStorage.length; i++){
               var value = localStorage[localStorage.key(i)];
-              if (value == movie.title_localized) {
+              if (localStorage.key(i) == movie.title_localized) {
                 exists = true;
               }
             };
@@ -111,7 +124,7 @@ var app = {
               var exists = false;
               for (var i = 0; i < localStorage.length; i++){
                 var value = localStorage[localStorage.key(i)];
-                if (value == movie.title_localized) {
+                if (localStorage.key(i) == movie.title_localized) {
                   exists = true;
                 }
               };
@@ -149,9 +162,9 @@ var app = {
             '<h3 class="movie-director">' + movie.directors[0].surname + ' (' + movie.release_year + ')</h3>',
           '</div>',
           '<div class="movie-info">',
-            '<p class="movie-description">' + movie.description + '</p>',
-            '<a href="#" class="seen-button">I have already seen it!</a>',
-            '<a href="#" class="pass-button">Hm, not now.</a>',
+            "<a href='#' class='seen-button'>I've seen it!</a>",
+            '<a href="#" class="pass-button">Hm, not now</a>',
+            "<a href='#' class='remove-button'>Never show this</a>",
           '</div>',
         '</li>'
       ].join(''));
@@ -169,13 +182,15 @@ var app = {
 
     for (var i = 0; i < localStorage.length; i++){
       var value = localStorage[localStorage.key(i)];
-      app.ui.seenList.append([
-        '<li>',
-          '<span class="seen-movie">' + value + '</span>',
-          '<a href="#" class="remove-movie-button" title="I have not seen this movie">x</a>',
-        '</li>'
-      ].join(''));
-      app.bindRemoveMovie();
+      if (value == 'seen') {
+        app.ui.seenList.append([
+          '<li>',
+            '<span class="seen-movie">' + localStorage.key(i) + '</span>',
+            '<a href="#" class="remove-movie-from-seen-button" title="I have not seen this movie">x</a>',
+          '</li>'
+        ].join(''));
+        app.bindRemoveMovieFromSeen();
+      }
     }
   }
 };
