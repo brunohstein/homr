@@ -158,7 +158,9 @@ var app = {
             '<img src="' + app.config.baseUrl + movie.hires_image + '">',
           '</div>',
           '<div class="movie-id">',
-            '<h2 class="movie-title">' + movie.title_localized + '</h2>',
+            '<h2 class="movie-title">' + movie.title_localized +
+              '<a class="youtube-link" title="Watch a trailer!" href="http://www.youtube.com/results?search_query=' + movie.title_localized + '+' + movie.release_year + '+trailer" target="_blank"></a>',
+            '</h2>',
             '<h3 class="movie-director">' + movie.directors[0].surname + ' (' + movie.release_year + ')</h3>',
           '</div>',
           '<div class="movie-info">',

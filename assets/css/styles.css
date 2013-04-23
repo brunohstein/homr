@@ -40,7 +40,7 @@ body.visible {
 }
 
 .wrapper {
-  width: 910px;
+  width: 960px;
   margin: 0 auto;
   padding-bottom: 150px;
   overflow: visible;
@@ -163,6 +163,7 @@ header {
 
   .movie-list li {
     display: none;
+    position: relative;
   }
 
   .movie-list li:first-child {
@@ -194,11 +195,30 @@ header {
 
   .movie-title {
     font-family: 'Delicious Bold';
-    font-size: 40px;
-    width: 250px;
+    font-size: 35px;
     line-height: 35px;
     text-transform: uppercase;
+    max-width: 530px;
   }
+
+  .youtube-link {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background: url('../img/youtube-icon.png') no-repeat;
+    margin: 0 0 0 8px;
+    vertical-align: top;
+    opacity: 0.8;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+  }
+
+    .youtube-link:hover {
+      opacity: 1;
+    }
 
   .movie-director {
     font-family: 'Delicious Bold';
@@ -210,9 +230,9 @@ header {
   }
 
 .movie-info {
-  display: inline-block;
-  vertical-align: middle;
-  margin-left: 50px;
+  position: absolute;
+  top: 14px;
+  right: 0;
 }
 
   .movie-description {
@@ -228,29 +248,37 @@ header {
     -o-box-sizing: border-box;
     box-sizing: border-box;
     color: white;
-    margin-top: 25px;
-    float: left;
+    display: block;
     text-decoration: none;
     font-size: 16px;
     cursor: pointer;
     text-align: center;
+    text-transform: uppercase;
+    width: 160px;
+    opacity: 0.8;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
   }
 
+    .seen-button:hover, .pass-button:hover, .remove-button:hover {
+      opacity: 1;
+    }
+
   .seen-button {
-    width: 135px;
     background: #1d1626;
   }
 
   .pass-button {
-    width: 135px;
     background: #6a6473;
-    margin-left: 1px;
+    margin-top: 1px;
   }
 
   .remove-button {
-    width: 135px;
     background: #881313;
-    margin-left: 1px;
+    margin-top: 1px;
   }
 
 .the-end h3 {
