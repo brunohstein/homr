@@ -21,6 +21,16 @@ var app = {
     app.ui.seenMoviesTitle.hide();
     app.bindGenreSelector();
     app.showSeenMovies();
+    app.databaseCompatibility();
+  },
+
+  databaseCompatibility: function() {
+    for (var i = 0; i < localStorage.length; i++) {
+      var value = localStorage[localStorage.key(i)];
+      if (value == localStorage.key(i)) {
+        localStorage.setItem(localStorage.key(i), 'seen');
+      }
+    };
   },
 
   bindGenreSelector: function() {
@@ -105,12 +115,6 @@ var app = {
       $.each(data.objects, function(i, movie) {
         if (i < 9) {
           if (movie.average_score >= app.config.minimumAverageScore & movie.number_of_votes >= app.config.minimumNumberOfVotes) {
-            for (var i = 0; i < localStorage.length; i++) { // temp
-              var value = localStorage[localStorage.key(i)];
-              if (value == movie.title_localized) {
-                localStorage.setItem(localStorage.key(i), 'seen');
-              }
-            };
             var exists = false;
             for (var i = 0; i < localStorage.length; i++) {
               var value = localStorage[localStorage.key(i)];
@@ -127,12 +131,6 @@ var app = {
           app.showMovies(movies);
           if (movie.average_score >= app.config.minimumAverageScore) {
             if (movie.number_of_votes >= app.config.minimumNumberOfVotes) {
-              for (var i = 0; i < localStorage.length; i++) { // temp
-                var value = localStorage[localStorage.key(i)];
-                if (value == movie.title_localized) {
-                  localStorage.setItem(localStorage.key(i), 'seen');
-                }
-              };
               var exists = false;
               for (var i = 0; i < localStorage.length; i++) {
                 var value = localStorage[localStorage.key(i)];
