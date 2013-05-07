@@ -79,8 +79,6 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
           movie.status = 'watched';
         }
 
-        console.log(movie);
-
         view.print(movie);
       }
 
@@ -100,8 +98,6 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
         if (movie.isWatched()) {
           movie.status = 'watched';
         }
-
-        console.log(movie);
 
         view.print(movie);
       }
