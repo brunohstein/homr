@@ -31,7 +31,7 @@ define(function() {
     $('.toggle-movie-status', context).click(function() {
       var listItem = $(this).parents('li'),
           movieId = listItem.attr('id'),
-          movieName = listItem.find('.title').text(),
+          movieTitle = listItem.find('.title').text(),
           button = $(this);
 
       if (listItem.hasClass('watched')) {
@@ -41,7 +41,7 @@ define(function() {
       } else {
         listItem.addClass('watched');
         button.text('Não assistido?');
-        window.movies.flagWatched(movieId, movieName);
+        window.movies.flagWatched(movieId, movieTitle);
       }
     });
   }

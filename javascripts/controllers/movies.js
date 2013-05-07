@@ -80,18 +80,19 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
     }
   }
 
-  function flagWatched(movieId, movieName) {
+  function flagWatched(movieId, movieTitle) {
     var stored = database.get('watched'),
         found = false;
 
     for (i = 0; i < stored.length; i++) {
-      if (movieId == stored[i]) {
+      if (movieId == stored[i].id) {
         found = true;
       }
     }
 
     if (found == false) {
-      database.put('watched', movieId);
+      var movie = { id: movieId, title: movieTitle };
+      database.put('watched', movie);
     }
   }
 
@@ -99,7 +100,7 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
     var watchedStored = database.get('watched');
 
     for (i = 0; i < watchedStored.length; i++) {
-      if (watchedStored[i] === movieId) {
+      if (watchedStored[i].id === movieId) {
         watchedStored.splice(i, 1);
         database.replace('watched', watchedStored);
       }

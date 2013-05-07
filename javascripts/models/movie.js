@@ -15,7 +15,7 @@ define(['helpers/database'], function(database) {
           isWatched = false;
 
       for (w = 0; w < watchedMovies.length; w++) {
-        if (this.id == watchedMovies[w]) {
+        if (this.id == watchedMovies[w].id) {
           isWatched = true;
         };
       }
