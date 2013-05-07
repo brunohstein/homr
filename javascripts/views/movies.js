@@ -124,7 +124,7 @@ define(function() {
 
   function print(movie) {
     var loader = $('.loader'),
-        template = new EJS({url: 'javascripts/views/_movie.ejs'}).render(movie);
+        template = new EJS({url: 'javascripts/views/movie.ejs'}).render(movie);
 
     loader.before(template);
     filterByStatus();
