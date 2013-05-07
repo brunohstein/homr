@@ -1,0 +1,20 @@
+<li class="movie<% if (status == 'watched') { %> watched<% } %>" id="<%= id %>">
+  <img src="<%= image %>" alt="<%= title %>" class="image">
+  <img src="images/checkmark.png" class="checkmark">
+  <div class="hover">
+    <div class="info">
+      <h2 class="title"><%= title %></h2>
+      <div class="director"><%= director %></div>
+      <div class="year"><%= year %></div>
+    </div>
+    <div class="action">
+      <button class="toggle-movie-status">
+        <% if (status == 'watched') { %>
+          Não assistido
+        <% } else { %>
+          + Assistido
+        <% } %>
+      </button>
+    </div>
+  </div>
+</li>

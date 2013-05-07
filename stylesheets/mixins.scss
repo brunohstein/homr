@@ -1,0 +1,48 @@
+@mixin box-sizing($value) {
+  -webkit-box-sizing: $value;
+  -moz-box-sizing: $value;
+  -ms-box-sizing: $value;
+  -o-box-sizing: $value;
+  box-sizing: $value;
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin transition($property, $time, $ease) {
+  -webkit-transition: $property $time $ease;
+  -moz-transition: $property $time $ease;
+  -ms-transition: $property $time $ease;
+  -o-transition: $property $time $ease;
+  transition: $property $time $ease; 
+}
+
+@mixin clearfix() {
+  &:after {
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    font-size: 0;
+  }
+}
+
+@mixin box-shadow($h-shadow, $v-shadow, $blur, $color, $inset: "") {
+  -webkit-box-shadow: $h-shadow $v-shadow $blur $color #{$inset};
+  -moz-box-shadow: $h-shadow $v-shadow $blur $color #{$inset};
+  -ms-box-shadow: $h-shadow $v-shadow $blur $color #{$inset};
+  -o-box-shadow: $h-shadow $v-shadow $blur $color #{$inset};
+  box-shadow: $h-shadow $v-shadow $blur $color #{$inset};
+}
+
+@mixin placeholder {
+  &.placeholder { @content }
+  &:-moz-placeholder { @content }
+  &::-webkit-input-placeholder { @content }
+}

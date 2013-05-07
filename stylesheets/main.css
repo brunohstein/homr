@@ -1,0 +1,301 @@
+@import url("http://fonts.googleapis.com/css?family=Lato:400,700");
+@import url("../vendor/stylesheets/chosen");
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none; }
+
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body {
+  color: #202022;
+  background: #202022;
+  font-family: "Lato", sans-serif;
+  font-weight: 400; }
+
+.wrapper {
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+  min-width: 646px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  box-sizing: border-box; }
+
+header {
+  height: 60px;
+  background: #18191b;
+  line-height: 56px;
+  margin: 0 0 15px;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  top: 0;
+  border-bottom: 1px solid black;
+  -webkit-transition: opacity 0.5s ease;
+  -moz-transition: opacity 0.5s ease;
+  -ms-transition: opacity 0.5s ease;
+  -o-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+  opacity: 0.5; }
+  header:hover {
+    opacity: 1; }
+  header .logo {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+    box-sizing: border-box;
+    padding-top: 10px;
+    float: left; }
+  header .utilities {
+    float: right; }
+    header .utilities .chzn-container {
+      margin-left: 5px; }
+
+select, .chzn-container {
+  width: 140px; }
+  select .chzn-single, .chzn-container .chzn-single {
+    height: 32px !important;
+    line-height: 32px !important;
+    border: 0 !important;
+    color: #e8b02b !important;
+    background: #202022 !important;
+    -webkit-border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
+    -ms-border-radius: 3px !important;
+    -o-border-radius: 3px !important;
+    border-radius: 3px !important;
+    -webkit-box-shadow: 0 1px 2px black !important ;
+    -moz-box-shadow: 0 1px 2px black !important ;
+    -ms-box-shadow: 0 1px 2px black !important ;
+    -o-box-shadow: 0 1px 2px black !important ;
+    box-shadow: 0 1px 2px black !important ;
+    text-transform: uppercase !important;
+    font-size: 12px !important; }
+    select .chzn-single div, .chzn-container .chzn-single div {
+      background: url("../images/select-arrow.png") left center no-repeat !important; }
+      select .chzn-single div b, .chzn-container .chzn-single div b {
+        display: none; }
+  select.chzn-with-drop .chzn-single, .chzn-container.chzn-with-drop .chzn-single {
+    -webkit-border-radius: 3px 3px 0 0 !important;
+    -moz-border-radius: 3px 3px 0 0 !important;
+    -ms-border-radius: 3px 3px 0 0 !important;
+    -o-border-radius: 3px 3px 0 0 !important;
+    border-radius: 3px 3px 0 0 !important; }
+  select .chzn-drop, .chzn-container .chzn-drop {
+    -webkit-border-radius: 0 0 3px 3px !important;
+    -moz-border-radius: 0 0 3px 3px !important;
+    -ms-border-radius: 0 0 3px 3px !important;
+    -o-border-radius: 0 0 3px 3px !important;
+    border-radius: 0 0 3px 3px !important;
+    background: #202022 !important;
+    color: #e8b02b !important;
+    border: none !important; }
+    select .chzn-drop .chzn-results, .chzn-container .chzn-drop .chzn-results {
+      max-height: 500px !important; }
+      select .chzn-drop .chzn-results li, .chzn-container .chzn-drop .chzn-results li {
+        padding: 8px 6px !important;
+        -webkit-transition: all 0.25s ease;
+        -moz-transition: all 0.25s ease;
+        -ms-transition: all 0.25s ease;
+        -o-transition: all 0.25s ease;
+        transition: all 0.25s ease;
+        -webkit-border-radius: 2px !important;
+        -moz-border-radius: 2px !important;
+        -ms-border-radius: 2px !important;
+        -o-border-radius: 2px !important;
+        border-radius: 2px !important; }
+      select .chzn-drop .chzn-results li:hover, select .chzn-drop .chzn-results li.highlighted, .chzn-container .chzn-drop .chzn-results li:hover, .chzn-container .chzn-drop .chzn-results li.highlighted {
+        background: #efca70 !important;
+        color: #202022 !important; }
+
+button {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  padding: 0;
+  height: 35px;
+  line-height: 35px;
+  width: 126px;
+  font-size: 12px;
+  text-transform: uppercase;
+  border: 0;
+  background: #e8b02b;
+  color: #202022;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) ;
+  -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) ;
+  -ms-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) ;
+  -o-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) ;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) ;
+  -webkit-transition: all 0.25s ease;
+  -moz-transition: all 0.25s ease;
+  -ms-transition: all 0.25s ease;
+  -o-transition: all 0.25s ease;
+  transition: all 0.25s ease; }
+  button:hover {
+    background: #eab942;
+    color: #070708;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) ;
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) ;
+    -ms-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) ;
+    -o-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) ;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) ; }
+
+input[type="text"] {
+  width: 180px;
+  outline: 0;
+  height: 32px;
+  line-height: 16px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background: #202022;
+  color: #e8b02b;
+  border: 0;
+  padding: 0 10px;
+  font-size: 12px;
+  -webkit-box-shadow: 0 1px 2px black inset !important;
+  -moz-box-shadow: 0 1px 2px black inset !important;
+  -ms-box-shadow: 0 1px 2px black inset !important;
+  -o-box-shadow: 0 1px 2px black inset !important;
+  box-shadow: 0 1px 2px black inset !important; }
+  input[type="text"].placeholder {
+    color: #e8b02b;
+    text-transform: uppercase; }
+  input[type="text"]:-moz-placeholder {
+    color: #e8b02b;
+    text-transform: uppercase; }
+  input[type="text"]::-webkit-input-placeholder {
+    color: #e8b02b;
+    text-transform: uppercase; }
+
+.movies {
+  margin-top: 75px; }
+  .movies .movie-list {
+    margin: 0 15px;
+    min-width: 626px; }
+    .movies .movie-list .loader {
+      float: left;
+      width: 144px;
+      height: 218px;
+      position: relative;
+      margin: 0 5px 10px;
+      background: url("../images/loader.gif") no-repeat center center; }
+    .movies .movie-list .movie {
+      float: left;
+      width: 144px;
+      height: 218px;
+      position: relative;
+      overflow: hidden;
+      margin: 0 5px 10px; }
+      .movies .movie-list .movie:hover .hover {
+        top: 0; }
+      .movies .movie-list .movie.watched .hover {
+        background: rgba(255, 255, 255, 0.5); }
+      .movies .movie-list .movie.watched .image {
+        opacity: 0.1; }
+      .movies .movie-list .movie.watched .checkmark {
+        opacity: 0.7; }
+      .movies .movie-list .movie.watched button {
+        background: rgba(255, 255, 255, 0.8); }
+        .movies .movie-list .movie.watched button:hover {
+          background: white; }
+      .movies .movie-list .movie.watched:hover .checkmark {
+        opacity: 0; }
+      .movies .movie-list .movie .image {
+        -webkit-transition: opacity 0.35s ease;
+        -moz-transition: opacity 0.35s ease;
+        -ms-transition: opacity 0.35s ease;
+        -o-transition: opacity 0.35s ease;
+        transition: opacity 0.35s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1; }
+      .movies .movie-list .movie .checkmark {
+        -webkit-transition: all 0.35s ease;
+        -moz-transition: all 0.35s ease;
+        -ms-transition: all 0.35s ease;
+        -o-transition: all 0.35s ease;
+        transition: all 0.35s ease;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -16px 0 0 -16px;
+        opacity: 0;
+        z-index: 2; }
+      .movies .movie-list .movie .hover {
+        -webkit-transition: all 0.35s ease;
+        -moz-transition: all 0.35s ease;
+        -ms-transition: all 0.35s ease;
+        -o-transition: all 0.35s ease;
+        transition: all 0.35s ease;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        height: 100%;
+        padding: 10px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -ms-box-sizing: border-box;
+        -o-box-sizing: border-box;
+        box-sizing: border-box;
+        background: rgba(232, 176, 43, 0.9);
+        z-index: 2; }
+        .movies .movie-list .movie .hover .info {
+          cursor: default; }
+          .movies .movie-list .movie .hover .info .title {
+            color: white;
+            font-size: 17px;
+            line-height: 20px;
+            font-weight: 700;
+            margin: 6px 0 3px; }
+          .movies .movie-list .movie .hover .info .director, .movies .movie-list .movie .hover .info .year {
+            color: #202022;
+            font-size: 13px;
+            line-height: 20px; }
+        .movies .movie-list .movie .hover .action {
+          position: absolute;
+          bottom: 10px;
+          z-index: 2; }

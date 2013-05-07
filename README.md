@@ -1,4 +1,4 @@
-Which Movie?
+Homr
 =========
 
-Movies you should see before you die.
+Keep track of the movies you watch.
