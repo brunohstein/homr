@@ -50,13 +50,13 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
     }
   }
 
-  function searchByName(movieName) {
+  function searchByName(movieTitle) {
     view.showLoader();
 
     var api = 'http://api.filmaster.com';
 
     $.ajax({
-      url: api + '/1.1/search/film/?phrase=' + movieName,
+      url: api + '/1.1/search/film/?phrase=' + movieTitle,
       dataType: 'jsonp',
       success: successCallback
     });
@@ -75,6 +75,38 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
                       data.best_results[m].number_of_votes
                     );
 
+        view.print(movie);
+      }
+    }
+  }
+
+  function loadWatched() {
+    view.showLoader();
+
+    var watchedMovies = database.get('watched'),
+        api = 'http://api.filmaster.com';
+
+    for (i = 0; i < watchedMovies.length; i++) {
+      $.ajax({
+        url: api + '/1.1/search/film/?phrase=' + watchedMovies[i].title,
+        dataType: 'jsonp',
+        success: successCallback
+      });
+
+      function successCallback(data) {
+        var movie = new Movie(
+                      data.best_results[0].imdb_code,
+                      data.best_results[0].title_localized,
+                      data.best_results[0].release_year,
+                      data.best_results[0].directors[0].name,
+                      data.best_results[0].directors[0].surname,
+                      data.best_results[0].hires_image,
+                      data.best_results[0].tags,
+                      data.best_results[0].average_score,
+                      data.best_results[0].number_of_votes
+                    );
+
+        movie.status = 'watched';
         view.print(movie);
       }
     }
@@ -111,6 +143,7 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
     start:start,
     load:load,
     searchByName:searchByName,
+    loadWatched:loadWatched,
     flagWatched:flagWatched,
     unflagWatched:unflagWatched
   };

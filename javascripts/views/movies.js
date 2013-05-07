@@ -58,12 +58,21 @@ define(function() {
   function onStatusFilterChange() {
     $('.status-filter').change(function() {
       window.statusFilter = $(this).val();
-
-      filterByStatus();
-
-      if (isPageFull() == false) {
-        window.currentPage++;
-        window.movies.load(window.currentPage, window.genreFilter);
+      
+      if (window.statusFilter == 'watched') {
+        clear();
+        window.movies.loadWatched();
+      } else if (window.statusFilter == 'suggested') {
+        clear();
+        window.currentPage = 1;
+        movies.load(window.currentPage, window.genreFilter);
+      } else {
+        console.log('pre-clear');
+        clear();
+        window.currentPage = 1;
+        console.log('pre-load');
+        movies.load(window.currentPage, window.genreFilter);
+        console.log('after-load');
       }
     });
   }
@@ -82,28 +91,9 @@ define(function() {
     });
   }
 
-  function filterByStatus() {
-    if (window.statusFilter == 'watched') {
-      hideNotWatched();
-    } else if (window.statusFilter == 'suggested') {
-      hideWatched();
-    } else {
-      showAll();
-    }
-
-    function hideNotWatched() {
-      $('.watched').fadeIn();
-      $('.movie').not('.watched').hide();
-    }
-
-    function hideWatched() {
-      $('.movie').not('.watched').fadeIn();
-      $('.watched').hide();
-    }
-
-    function showAll() {
-      $('.movie').fadeIn();
-    }
+  function hideWatched() {
+    console.log('hideWatched');
+    $('.watched').hide();
   }
 
   function isPageFull() {
@@ -115,9 +105,11 @@ define(function() {
 
   function onScrollToBottom() {
     $(window).scroll(function() {
-      if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-        window.currentPage++;
-        window.movies.load(window.currentPage, window.genreFilter);   
+      if (window.statusFilter != 'watched') {
+        if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+          window.currentPage++;
+          window.movies.load(window.currentPage, window.genreFilter);   
+        }
       }
     });
   }
@@ -127,8 +119,11 @@ define(function() {
         template = new EJS({url: 'javascripts/views/movie.ejs'}).render(movie);
 
     loader.before(template);
-    filterByStatus();
     hideLoader();
+
+    if (window.statusFilter == 'suggested') {
+      hideWatched();
+    }
 
     var item = $('#' + movie.id);
     onToggleMovieStatusClick(item);
