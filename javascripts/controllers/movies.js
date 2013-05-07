@@ -77,6 +77,22 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
 
         view.print(movie);
       }
+
+      for (m = 0; m < data.results.length; m++) {
+        var movie = new Movie(
+                      data.results[m].imdb_code,
+                      data.results[m].title_localized,
+                      data.results[m].release_year,
+                      data.results[m].directors[0].name,
+                      data.results[m].directors[0].surname,
+                      data.results[m].hires_image,
+                      data.results[m].tags,
+                      data.results[m].average_score,
+                      data.results[m].number_of_votes
+                    );
+
+        view.print(movie);
+      }
     }
   }
 
