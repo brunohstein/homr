@@ -16,10 +16,10 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
     $.ajax({
       url: api + '/1.1/ranking/film/?tags=' + genre + '&page=' + page,
       dataType: 'jsonp',
-      success: successCallback
+      success: printLoaded
     });
 
-    function successCallback(data) {
+    function printLoaded(data) {
       for (m = 0; m < data.objects.length; m++) {
 
         var movie = new Movie(
@@ -58,10 +58,10 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
     $.ajax({
       url: api + '/1.1/search/film/?phrase=' + movieTitle,
       dataType: 'jsonp',
-      success: successCallback
+      success: printSearched
     });
 
-    function successCallback(data) {
+    function printSearched(data) {
       for (m = 0; m < data.best_results.length; m++) {
         var movie = new Movie(
                       data.best_results[m].imdb_code,
@@ -74,6 +74,12 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
                       data.best_results[m].average_score,
                       data.best_results[m].number_of_votes
                     );
+
+        if (movie.isWatched()) {
+          movie.status = 'watched';
+        }
+
+        console.log(movie);
 
         view.print(movie);
       }
@@ -91,6 +97,12 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
                       data.results[m].number_of_votes
                     );
 
+        if (movie.isWatched()) {
+          movie.status = 'watched';
+        }
+
+        console.log(movie);
+
         view.print(movie);
       }
     }
@@ -106,25 +118,25 @@ define(['views/movies', 'models/movie', 'helpers/database'], function(view, Movi
       $.ajax({
         url: api + '/1.1/search/film/?phrase=' + watchedMovies[i].title,
         dataType: 'jsonp',
-        success: successCallback
+        success: printWatched
       });
+    }
 
-      function successCallback(data) {
-        var movie = new Movie(
-                      data.best_results[0].imdb_code,
-                      data.best_results[0].title_localized,
-                      data.best_results[0].release_year,
-                      data.best_results[0].directors[0].name,
-                      data.best_results[0].directors[0].surname,
-                      data.best_results[0].hires_image,
-                      data.best_results[0].tags,
-                      data.best_results[0].average_score,
-                      data.best_results[0].number_of_votes
-                    );
+    function printWatched(data) {
+      var movie = new Movie(
+                    data.best_results[0].imdb_code,
+                    data.best_results[0].title_localized,
+                    data.best_results[0].release_year,
+                    data.best_results[0].directors[0].name,
+                    data.best_results[0].directors[0].surname,
+                    data.best_results[0].hires_image,
+                    data.best_results[0].tags,
+                    data.best_results[0].average_score,
+                    data.best_results[0].number_of_votes
+                  );
 
-        movie.status = 'watched';
-        view.print(movie);
-      }
+      movie.status = 'watched';
+      view.print(movie);
     }
   }
 
