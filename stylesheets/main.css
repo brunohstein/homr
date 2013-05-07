@@ -63,15 +63,7 @@ header {
   width: 100%;
   z-index: 3;
   top: 0;
-  border-bottom: 1px solid black;
-  -webkit-transition: opacity 0.5s ease;
-  -moz-transition: opacity 0.5s ease;
-  -ms-transition: opacity 0.5s ease;
-  -o-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
-  opacity: 0.5; }
-  header:hover {
-    opacity: 1; }
+  border-bottom: 1px solid black; }
   header .logo {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;

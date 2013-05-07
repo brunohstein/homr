@@ -29,12 +29,6 @@ header {
   z-index: 3;
   top: 0;
   border-bottom: 1px solid black;
-  @include transition(opacity, .5s, ease);
-  opacity: 0.5;
-
-  &:hover {
-    opacity: 1;
-  }
 
   .logo {
     @include box-sizing(border-box);
